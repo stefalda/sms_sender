@@ -1,4 +1,4 @@
-#SMS Sender
+# SMS Sender
 
 A simple Android app to send sms from an embedded web server.
 
