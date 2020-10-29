@@ -1,0 +1,57 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="utf-8">
+        <title>Send an SMS</title>
+        <style>
+            body{
+                font-family: Helvetica;
+            }
+            .float-label {
+                color: gray;
+                font-weight:bold;
+            }
+
+        </style>
+        <script  type="text/javascript">
+            async function sendData(form){
+                const message = {message: form.message.value, number: form.number.value};
+                const fetchOptions = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify(message),
+                };
+                //debugger;
+                const response = await fetch("/send", fetchOptions);
+
+                if (!response.ok) {
+                    const errorMessage = await response.text();
+                    alert(errorMessage);
+                }
+
+            	alert("Message sent!");
+            	form.reset();
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Send an SMS</h1>
+        <form onsubmit="sendData(this);" autocomplete="off">
+                <div>
+                          <label class="float-label" for="number">Phone</label><br>
+                          <input type="tel" id="number" style="width:50%;">
+                </div>
+            <div>
+                <label class="float-label"  for="message">Message</label><br>
+                <input type="text" id="message" style="width:90%;">
+            </div>
+            <div style="width:100%;text-align:center;margin-top:1em;">
+                <button type="submit" style="width:20em">Send</button>
+            </div>
+        </form>
+    </body>
+</html>
