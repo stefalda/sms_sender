@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:label="sms_sender"
+        android:label="SMS sender"
         android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
